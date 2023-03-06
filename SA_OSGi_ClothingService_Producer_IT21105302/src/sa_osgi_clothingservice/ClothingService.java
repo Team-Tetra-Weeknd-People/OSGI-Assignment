@@ -10,4 +10,6 @@ public interface ClothingService {
 	public boolean checkClothingAvailabilityTS(String type,String Size);
 	public boolean checkClothingAvailabilityBS(String brandName,String Size);
 	public double price(); 
+	public Clothing[] results();
+	public int getCount();
 }
