@@ -11,6 +11,10 @@ public class ClothingServiceImpl implements ClothingService{
 	Clothing[] inStockClothes = {c1,c2,c3,c4,c5};
 	
 	double outPrice;
+	
+	Clothing[] clothes = new Clothing[100];
+	int count ;
+	
 	@Override
 	public boolean checkClothingAvailability(String brandName, String type, String Size) {
 		// TODO Auto-generated method stub
@@ -30,41 +34,118 @@ public class ClothingServiceImpl implements ClothingService{
 		// TODO Auto-generated method stub
 		return outPrice;
 	}
-
 	@Override
 	public boolean checkClothingAvailabilityBrand(String brandName) {
 		// TODO Auto-generated method stub
-		return false;
+		count = 0;
+		for(int i = 0; i < inStockClothes.length;i++) {
+			if ( inStockClothes[i].getBrand().equalsIgnoreCase(brandName)) {
+				clothes[count++] = inStockClothes[i];
+			}		
+		}
+		if (count>0) {
+			return true;
+		}
+		else {
+			return false;
+		}
 	}
 
 	@Override
 	public boolean checkClothingAvailabilityType(String type) {
 		// TODO Auto-generated method stub
-		return false;
+		count = 0;
+		for(int i = 0; i < inStockClothes.length;i++) {
+			if ( inStockClothes[i].getType().equalsIgnoreCase(type)) {
+				clothes[count++] = inStockClothes[i];
+			}		
+		}
+		if (count>0) {
+			return true;
+		}
+		else {
+			return false;
+		}
 	}
 
 	@Override
 	public boolean checkClothingAvailabilitySize(String Size) {
 		// TODO Auto-generated method stub
-		return false;
+		count = 0;
+		for(int i = 0; i < inStockClothes.length;i++) {
+			if ( inStockClothes[i].getSize().equalsIgnoreCase(Size)) {
+				clothes[count] = inStockClothes[i];
+				System.out.println(clothes[count].getBrand());
+				count++;
+			}		
+		}
+		if (count>0) {
+			return true;
+		}
+		else {
+			return false;
+		}
 	}
-
 	@Override
 	public boolean checkClothingAvailabilityBT(String brandName, String type) {
 		// TODO Auto-generated method stub
-		return false;
+		count = 0;
+		for(int i = 0; i < inStockClothes.length;i++) {
+			if ( inStockClothes[i].getBrand().equalsIgnoreCase(brandName)
+					&& inStockClothes[i].getType().equalsIgnoreCase(type)) {
+				clothes[count++] = inStockClothes[i];
+			}		
+		}
+		if (count>0) {
+			return true;
+		}
+		else {
+			return false;
+		}
 	}
 
 	@Override
 	public boolean checkClothingAvailabilityTS(String type, String Size) {
 		// TODO Auto-generated method stub
-		return false;
+		count = 0;
+		for(int i = 0; i < inStockClothes.length;i++) {
+			if ( inStockClothes[i].getSize().equalsIgnoreCase(Size)
+					&& inStockClothes[i].getType().equalsIgnoreCase(type)) {
+				clothes[count++] = inStockClothes[i];
+			}		
+		}
+		if (count>0) {
+			return true;
+		}
+		else {
+			return false;
+		}
 	}
 
 	@Override
 	public boolean checkClothingAvailabilityBS(String brandName, String Size) {
 		// TODO Auto-generated method stub
-		return false;
+		count = 0;
+		for(int i = 0; i < inStockClothes.length;i++) {
+			if ( inStockClothes[i].getBrand().equalsIgnoreCase(brandName)
+					&& inStockClothes[i].getSize().equalsIgnoreCase(Size)) {
+				clothes[count++] = inStockClothes[i];
+			}		
+		}
+		if (count>0) {
+			return true;
+		}
+		else {
+			return false;
+		}
 	}
 
+	@Override
+	public Clothing[] results() {
+		// TODO Auto-generated method stub
+		return clothes;
+	}
+	public int getCount() {
+		return count;
+	}
 }
