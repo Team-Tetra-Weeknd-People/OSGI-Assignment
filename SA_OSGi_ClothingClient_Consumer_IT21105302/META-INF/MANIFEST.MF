@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: ClothingConsumer (Client)
+Bundle-SymbolicName: ClothingConsumer (Client)
+Bundle-Description: Clothing Store Client.
+Bundle-Vendor: Fernando U.S.L - IT21105302
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: sa_osgi_clothingconsumer.ConsumerActivator
+Import-Package: org.osgi.framework;version="1.3.0",
+ sa_osgi_clothingservice
+Bundle-RequiredExecutionEnvironment: JavaSE-17
