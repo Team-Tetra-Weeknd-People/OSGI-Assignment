@@ -11,5 +11,6 @@ public interface ClothingService {
 	public boolean checkClothingAvailabilityBS(String brandName,String Size);
 	public double price(); 
 	public Clothing[] results();
+	public Clothing[] allClothing();
 	public int getCount();
 }

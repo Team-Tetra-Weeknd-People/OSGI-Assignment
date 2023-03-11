@@ -148,4 +148,10 @@ public class ClothingServiceImpl implements ClothingService{
 	public int getCount() {
 		return count;
 	}
+
+	@Override
+	public Clothing[] allClothing() {
+		// TODO Auto-generated method stub
+		return inStockClothes;
+	}
 }

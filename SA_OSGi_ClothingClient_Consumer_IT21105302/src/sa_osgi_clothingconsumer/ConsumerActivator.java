@@ -19,6 +19,7 @@ public class ConsumerActivator implements BundleActivator {
 	private static final DecimalFormat decfor = new DecimalFormat("0.00");  
 	
 	Clothing[] clothes;
+	int bCount = 0;
 	
 	public void start(BundleContext bundleContext) throws Exception {
 		serviceRef = bundleContext.getServiceReference(ClothingService.class.getName());
@@ -26,20 +27,61 @@ public class ConsumerActivator implements BundleActivator {
 		
 		try {
 			System.out.println("Enter the brand name, type and size to check availability and the price");
+			System.out.println("If you want to check the availability of clothes using only the brandname,\nthen keep blank for other fields.\nViseVersa to type and size.");
 			System.out.println("--------------------Enter Blank Every Field to exit--------------------");
 			
 			 String brandName = "";
 			 String type = "";
 			 String size = "";
 	         BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
+	         Clothing[] allClothes = clothingService.allClothing();
 	         
 	         while (true) {
 				System.out.print("Enter the brand name(Nike|Polo|Adidas|Moose)  : ");
 				brandName = in.readLine();
+				while(bCount==0) {
+				for(int i = 0;i<allClothes.length;i++) {
+					if(brandName.equalsIgnoreCase(allClothes[i].getBrand())||brandName.length() == 0) {
+						bCount++;
+					}
+				}
+				if(bCount==0) {
+					System.out.println("-------------- Invalid Brand Name --------------");
+					System.out.print("Enter the brand name(Nike|Polo|Adidas|Moose)  : ");
+					brandName = in.readLine();
+				}
+				}
+				bCount = 0;
 				System.out.print("Enter the type(Trouser|T-Shirt|Shirt)         : ");
 				type = in.readLine();
+				while(bCount==0) {
+					for(int i = 0;i<allClothes.length;i++) {
+						if(type.equalsIgnoreCase(allClothes[i].getType())||type.length() == 0) {
+							bCount++;
+						}
+					}
+					if(bCount==0) {
+						System.out.println("----------------- Invalid Type -----------------");
+						System.out.print("Enter the type(Trouser|T-Shirt|Shirt)         : ");
+						type = in.readLine();
+					}
+					}
+					bCount = 0;
 				System.out.print("Enter the size(S|M|L|Waist Size(If a trouser)): ");
 				size = in.readLine();
+				while(bCount==0) {
+					for(int i = 0;i<allClothes.length;i++) {
+						if(size.equalsIgnoreCase(allClothes[i].getSize())||size.length() == 0) {
+							bCount++;
+						}
+					}
+					if(bCount==0) {
+						System.out.println("----------------- Invalid Size -----------------");
+						System.out.print("Enter the size(S|M|L|Waist Size(If a trouser)): ");
+						size = in.readLine();
+					}
+					}
+					bCount = 0;
 				System.out.println("");
 				
 				if(brandName.length()==0&&type.length()==0&&size.length()==0) {
