@@ -3,7 +3,7 @@ package sa_osgi_clothingservice;
 public class ClothingServiceImpl implements ClothingService{
 	
 	Clothing c1 = new Clothing("Nike", "T-Shirt", "M", 9000.00);
-	Clothing c2 = new Clothing("Polo", "Shirt", "XL", 10500.00);
+	Clothing c2 = new Clothing("Polo", "Shirt", "S", 10500.00);
 	Clothing c3 = new Clothing("Adidas", "T-Shirt", "L", 7800.00);
 	Clothing c4 = new Clothing("Moose", "Trouser", "32", 4590.00);
 	Clothing c5 = new Clothing("Nike", "T-Shirt", "L", 19000.00);
@@ -74,9 +74,7 @@ public class ClothingServiceImpl implements ClothingService{
 		count = 0;
 		for(int i = 0; i < inStockClothes.length;i++) {
 			if ( inStockClothes[i].getSize().equalsIgnoreCase(Size)) {
-				clothes[count] = inStockClothes[i];
-				System.out.println(clothes[count].getBrand());
-				count++;
+				clothes[count++] = inStockClothes[i];
 			}		
 		}
 		if (count>0) {
@@ -148,7 +146,6 @@ public class ClothingServiceImpl implements ClothingService{
 	public int getCount() {
 		return count;
 	}
-
 	@Override
 	public Clothing[] allClothing() {
 		// TODO Auto-generated method stub

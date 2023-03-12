@@ -26,9 +26,10 @@ public class ConsumerActivator implements BundleActivator {
 		ClothingService clothingService = (ClothingService)bundleContext.getService(serviceRef);
 		
 		try {
-			System.out.println("Enter the brand name, type and size to check availability and the price");
-			System.out.println("If you want to check the availability of clothes using only the brandname,\nthen keep blank for other fields.\nViseVersa to type and size.");
-			System.out.println("--------------------Enter Blank Every Field to exit--------------------");
+			System.out.println("----------------------Enter Blank Every Field to exit------------------------");
+			System.out.println("---Enter the brand name, type and size to check availability and the price---");
+			System.out.println("---    If you want to check the availability of clothes using only the    \n    brandname,then keep blank for other fields.ViseVersa to type and size ---");
+			System.out.println("----------------------Enter Blank Every Field to exit------------------------\n");
 			
 			 String brandName = "";
 			 String type = "";
