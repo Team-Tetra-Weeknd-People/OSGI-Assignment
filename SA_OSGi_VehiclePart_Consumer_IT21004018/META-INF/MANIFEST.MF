@@ -1,0 +1,12 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: VehiclePartsConsumer
+Bundle-SymbolicName: VehiclePartsConsumer
+Bundle-Description: Vehicle Parts Store Client.
+Bundle-Vendor: Mawaththa W.R.Y_IT21004018
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: com.miti.vehiclepart.comsumer.ConsumerActivator
+Import-Package: org.osgi.framework;version="1.3.0",
+ com.mtit.vehiclepart.service
+Bundle-RequiredExecutionEnvironment: JavaSE-17
+
