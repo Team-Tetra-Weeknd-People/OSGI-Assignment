@@ -9,11 +9,10 @@ public class VehiclePartsServiceImpl implements VehiclePartsService {
 	
 	private Connection connection = null;
 	private Statement statement = null;
+	private PreparedStatement preState = null;
 	private  MallDB mallDB;
 	private ResultSet resultSet;
-	private int length;
 	boolean status;
-	int count;
 	
 	ArrayList<Part> partList = new ArrayList<Part>();
 	ArrayList<Part> parts = new ArrayList<Part>();
@@ -24,7 +23,7 @@ public class VehiclePartsServiceImpl implements VehiclePartsService {
 		
 		try {
 			statement=connection.createStatement();
-			String SelectAll = "Select * FROM part";
+			String SelectAll = "SELECT * FROM part";
 			resultSet = statement.executeQuery(SelectAll);
 			
 			while(resultSet.next()) {
@@ -36,11 +35,12 @@ public class VehiclePartsServiceImpl implements VehiclePartsService {
 				part.setPrice(resultSet.getDouble("price"));
 				partList.add(part);
 			}	
-			
 		}
 		catch(Exception e) {
 			System.out.println(e);
 		}
+		
+		this.deletePart(6);
 	}
 	
 
@@ -48,7 +48,6 @@ public class VehiclePartsServiceImpl implements VehiclePartsService {
 	public boolean checkPartAvailability(String name, String brand, String model) {
 		// TODO Auto-generated method stub
 		status = false;
-		count = 0;
 		parts.removeAll(parts);
 		
 		for(Part onePart : partList) {
@@ -64,7 +63,6 @@ public class VehiclePartsServiceImpl implements VehiclePartsService {
 	public boolean checkPartByNameNBrand(String name, String brand) {
 		// TODO Auto-generated method stub
 		status = false;
-		count = 0;
 		parts.removeAll(parts);
 		
 		for(Part onePart : partList) {
@@ -80,7 +78,6 @@ public class VehiclePartsServiceImpl implements VehiclePartsService {
 	public boolean checkPartByBrandNModel(String brand, String model) {
 		// TODO Auto-generated method stub
 		status = false;
-		count = 0;
 		parts.removeAll(parts);
 		
 		for(Part onePart : partList) {
@@ -96,7 +93,6 @@ public class VehiclePartsServiceImpl implements VehiclePartsService {
 	public boolean checkPartByNameNModel(String name, String model) {
 		// TODO Auto-generated method stub
 		status = false;
-		count = 0;
 		parts.removeAll(parts);
 		
 		for(Part onePart : partList) {
@@ -112,7 +108,6 @@ public class VehiclePartsServiceImpl implements VehiclePartsService {
 	public boolean checkPartByName(String name) {
 		// TODO Auto-generated method stub
 		status = false;
-		count = 0;
 		parts.removeAll(parts);
 		
 		for(Part onePart : partList) {
@@ -128,7 +123,6 @@ public class VehiclePartsServiceImpl implements VehiclePartsService {
 	public boolean checkPartByBrand(String brand) {
 		// TODO Auto-generated method stub
 		status = false;
-		count = 0;
 		parts.removeAll(parts);
 		
 		for(Part onePart : partList) {
@@ -144,7 +138,6 @@ public class VehiclePartsServiceImpl implements VehiclePartsService {
 	public boolean checkPartByModel(String model) {
 		// TODO Auto-generated method stub
 		status = false;
-		count = 0;
 		parts.removeAll(parts);
 		
 		for(Part onePart : partList) {
@@ -156,20 +149,11 @@ public class VehiclePartsServiceImpl implements VehiclePartsService {
 		return status;
 	}
 
-
-	@Override
-	public int getLength() {
-		// TODO Auto-generated method stub
-		return length;
-	}
-
-
 	@Override
 	public ArrayList<Part> getAllParts() {
 		// TODO Auto-generated method stub
 		return partList;
 	}
-
 
 	@Override
 	public ArrayList<Part> getParts() {
@@ -177,5 +161,106 @@ public class VehiclePartsServiceImpl implements VehiclePartsService {
 		return parts;
 	}
 
+	@Override
+	public ArrayList<Part> getPartsAll() {
+		// TODO Auto-generated method stub
+		ArrayList<Part> allParts = new ArrayList<Part>();
+		
+		try {
+			statement=connection.createStatement();
+			String SelectAll = "SELECT * FROM part";
+			resultSet = statement.executeQuery(SelectAll);
+			
+			while(resultSet.next()) {
+				Part part = new Part();
+				part.setId(resultSet.getInt("id"));
+				part.setName(resultSet.getString("name"));
+				part.setBrand(resultSet.getString("brand"));
+				part.setModel(resultSet.getString("model"));
+				part.setPrice(resultSet.getDouble("price"));
+				allParts.add(part);
+			}	
+			
+		}
+		catch(Exception e) {
+			System.out.println(e);
+		}
+		
+		return allParts;
+	}
+
+	@Override
+	public Part getOnePart(int id) {
+		// TODO Auto-generated method stub
+		Part part = new Part();
+		try {
+			statement=connection.createStatement();
+			String SelectAll = "SELECT * FROM part WHERE id = " + id;
+			resultSet = statement.executeQuery(SelectAll);
+			
+
+			if(resultSet.next() == false) {
+				return null;
+			}
+			else {
+				part.setId(resultSet.getInt("id"));
+				part.setName(resultSet.getString("name"));
+				part.setBrand(resultSet.getString("brand"));
+				part.setModel(resultSet.getString("model"));
+				part.setPrice(resultSet.getDouble("price"));
+			}
+		}
+		catch(Exception e) {
+			System.out.println(e);
+		}
+		
+		return part;
+	}
+
+	@Override
+	public void insertPart(String name, String brand, String model, double price) {
+		// TODO Auto-generated method stub
+		try {
+			preState = connection.prepareStatement("INSERT INTO part values (null,?,?,?,?)");
+			preState.setString(1, name);
+			preState.setString(2, brand);
+			preState.setString(3, model);
+			preState.setDouble(4, price);
+			preState.executeUpdate();
+		}
+		catch(Exception e) {
+			System.out.println(e);
+		}
+	}
+
+	@Override
+	public void updatePart(int id, String name, String brand, String model, double price) {
+		// TODO Auto-generated method stub
+		try {
+			preState = connection.prepareStatement("UPDATE part set name = (?) , brand = (?) , model = (?) , price = (?) WHERE id = (?)");
+			preState.setString(1, name);
+			preState.setString(2, brand);
+			preState.setString(3, model);
+			preState.setDouble(4, price);
+			preState.setInt(5, id);
+			preState.executeUpdate();
+		}
+		catch(Exception e) {
+			System.out.println(e);
+		}
+	}
+
+	@Override
+	public void deletePart(int id) {
+		// TODO Auto-generated method stub
+		try {
+			statement=connection.createStatement();
+			String DeleteOne = "DELETE FROM part WHERE id = " + id;
+			statement.executeUpdate(DeleteOne);
+		}
+		catch(Exception e) {
+			System.out.println(e);
+		}
+	}
 	
 }

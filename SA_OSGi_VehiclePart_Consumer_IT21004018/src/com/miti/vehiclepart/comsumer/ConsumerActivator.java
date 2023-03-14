@@ -122,7 +122,7 @@ public class ConsumerActivator implements BundleActivator {
 	}
 
 	public void stop(BundleContext bundleContext) throws Exception {
-		System.out.println("Good-Bye");
+		System.out.println("Good-Bye\n");
 		bundleContext.ungetService(serviceRef);
 	}
 
