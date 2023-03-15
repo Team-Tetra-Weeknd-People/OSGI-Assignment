@@ -1,0 +1,12 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: ToysServiceProducer
+Bundle-SymbolicName: ToysServiceProducer
+Bundle-Description: Toys Shop Producer
+Bundle-Vendor: Muthusinghe M.M.R._IT21008382
+Bundle-Version: 1.0.0.qualifier
+Export-Package: sa_osgi_toysservice
+Bundle-Activator: sa_osgi_toysservice.ProducerActivator
+Import-Package: org.osgi.framework;version="1.3.0",
+ sa_osgi_mall_database
+Bundle-RequiredExecutionEnvironment: JavaSE-17
