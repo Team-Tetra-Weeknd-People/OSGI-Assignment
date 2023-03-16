@@ -1,0 +1,15 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Food_Admin_IT20029586
+Bundle-SymbolicName: SA_OSGi_Food_Admin
+Bundle-Version: 1.0.0.qualifier
+Bundle-Description: Food Court Store Admin
+Bundle-Vendor: Tharushika W.D.C. IT20029586
+Bundle-Activator: com.mtit.food.admin.AdminActivator
+Bundle-RequiredExecutionEnvironment: JavaSE-15
+Automatic-Module-Name: SA.OSGi.Food.Admin.IT20029586
+Import-Package: com.miti.food.consumer,
+ com.mtit.food.service,
+ org.osgi.framework;version="1.3.0",
+ com.mtit.mall.database
+

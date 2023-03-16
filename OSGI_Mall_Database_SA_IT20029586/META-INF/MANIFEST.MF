@@ -1,0 +1,12 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: OSGI_Mall_Database
+Bundle-SymbolicName: OSGI_Mall_Database
+Bundle-Version: 1.0.0.qualifier
+Export-Package: com.mtit.mall.database
+Bundle-Activator: com.mtit.mall.database.DBActivator
+Bundle-RequiredExecutionEnvironment: JavaSE-17,
+ JavaSE-15,
+ JavaSE-1.8
+Import-Package: com.mysql.jdbc,
+ org.osgi.framework;version="1.3.0"
