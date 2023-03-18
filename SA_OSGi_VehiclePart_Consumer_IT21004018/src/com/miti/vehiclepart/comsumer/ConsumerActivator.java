@@ -21,6 +21,7 @@ public class ConsumerActivator implements BundleActivator {
 	String brand;
 	String model;
 	boolean status;
+	boolean valid;
 	boolean allEmpty;
 	String exit;
 	
@@ -35,9 +36,12 @@ public class ConsumerActivator implements BundleActivator {
 		
 		partList = vehiclePartService.getAllParts();
 		
-		System.out.print("---------------------");
-		System.out.print("Welcome to the Vehicle Parts Section");
-		System.out.println("---------------------\n");
+		System.out.println("-------------------------------------------------------------------");
+		System.out.println("---------------Welcome to the Vehicle Parts Section----------------");
+		System.out.println("-------------------------------------------------------------------\n");
+		
+		System.out.println("---Enter the required details you need to get the items you need---");
+		System.out.println("---------------Enter 3 Blanks to exit from the system--------------");
 		
 		try {
 			while(true) {
@@ -45,18 +49,87 @@ public class ConsumerActivator implements BundleActivator {
 				name = "";
 				brand = "";
 				model = "";
-				status = false;
 				allEmpty = false;
+				valid = false;
 				parts.removeAll(parts);
 
+				status = true;
 				System.out.print("Enter the Part Name (Front-Bumber | Rear-Bumper ...etc) : ");
 				name = br.readLine();
 				
+				if(name.length() != 0) {
+					while(status) {
+						for(Part part : partList) {
+							System.out.println(part.getName() + " " + name);
+							if(part.getName().equalsIgnoreCase(name)) {
+								valid = true;
+								break;
+							}
+						}
+						if(valid) {
+							break;
+						}
+						System.out.println("Invalid Input !!\n");
+						System.out.print("Enter the Part Name (Front-Bumber | Rear-Bumper ...etc) : ");
+						name = br.readLine();
+						if(name.length() == 0) {
+							break;
+						}
+					}
+				}
+				
+				status = true;
+				valid = false;
 				System.out.print("Enter the Vehicle Brand (Toyota | Nissan ...etc) : ");
 				brand = br.readLine();
 				
+				if(brand.length() != 0) {
+					while(status) {
+						for(Part part : partList) {
+							if(part.getBrand().equalsIgnoreCase(brand)) {
+								valid = true;
+								break;
+							}
+						}
+						if(valid) {
+							break;
+						}
+						System.out.println("Invalid Input !!\n");
+						System.out.print("Enter the Vehicle Brand (Toyota | Nissan ...etc) : ");
+						brand = br.readLine();
+						if(brand.length() == 0) {
+							break;
+						}
+					}
+				}
+				
+				status = true;
+				valid = false;
 				System.out.print("Enter the Vehicle Model (Premio | Leaf ...etc) : ");
 				model = br.readLine();
+				
+				if(model.length() != 0) {
+					while(status) {
+						for(Part part : partList) {
+							if(part.getModel().equalsIgnoreCase(model)) {
+								valid = true;
+								break;
+							}
+						}
+						if(valid) {
+							break;
+						}
+						System.out.println("Invalid Input !!\n");
+						System.out.print("Enter the Vehicle Model (Premio | Leaf ...etc) : ");
+						model = br.readLine();
+						if(model.length() == 0) {
+							break;
+						}
+					}
+				}
+				
+				
+				status = false;
 				
 				if (name.length() != 0 && brand.length() != 0 && model.length() != 0) {
 					status = vehiclePartService.checkPartAvailability(name, brand, model);
