@@ -6,7 +6,9 @@ Bundle-Description: Clothing Store Client.
 Bundle-Vendor: Fernando U.S.L_IT21105302
 Bundle-Version: 1.0.0.qualifier
 Bundle-Activator: sa_osgi_clothingconsumer.ConsumerActivator
+Export-Package: sa_osgi_clothingconsumer
 Import-Package: org.osgi.framework;version="1.3.0",
- sa_osgi_clothingservice
+ sa_osgi_clothingservice,sa_osgi_mall_database
 Bundle-RequiredExecutionEnvironment: JavaSE-17
+
 

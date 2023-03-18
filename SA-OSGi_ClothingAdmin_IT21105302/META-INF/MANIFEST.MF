@@ -1,0 +1,14 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: ClothingAdmin
+Bundle-SymbolicName: ClothingAdmin
+Bundle-Description: Clothing Store Admin.
+Bundle-Vendor: Fernando U.S.L_IT21105302
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: sa_osgi_clothingadmin.AdminActivator
+Import-Package: org.osgi.framework;version="1.3.0",
+ sa_osgi_clothingconsumer,
+ sa_osgi_clothingservice,
+ sa_osgi_mall_database
+Bundle-RequiredExecutionEnvironment: JavaSE-17
+
