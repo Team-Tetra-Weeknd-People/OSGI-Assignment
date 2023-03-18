@@ -17,11 +17,9 @@ public class AdminActivator implements BundleActivator {
 	ServiceReference serviceRef;
 	private static final DecimalFormat decfor = new DecimalFormat("0.00");  
 
-	@SuppressWarnings("null")
 	public void start(BundleContext bundleContext) throws Exception {
 		
 		serviceRef = bundleContext.getServiceReference(VehiclePartsService.class.getName());
-		@SuppressWarnings("unchecked")
 		VehiclePartsService vehiclePartService = (VehiclePartsService)bundleContext.getService(serviceRef);
 		
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -214,7 +212,7 @@ public class AdminActivator implements BundleActivator {
 						System.out.print("Enter the Vehicle Part Brand : ");
 						brand = br.readLine();
 						if(brand.length() == 0) {
-							brand = part.getModel();
+							brand = part.getBrand();
 						}
 						
 						System.out.print("Enter the Vehicle Part Model : ");
@@ -277,7 +275,7 @@ public class AdminActivator implements BundleActivator {
 						
 						System.out.print("Do You Want To Delete This Vehicle Item (Y | N): ");
 						String delete = br.readLine();
-						if(delete.equalsIgnoreCase("Y")) {
+						if(delete.equalsIgnoreCase("Y") || delete.equalsIgnoreCase("Yes")) {
 							vehiclePartService.deletePart(Integer.parseInt(inputID));
 							System.out.println("");
 							System.out.println("-----------------------------------------");
@@ -302,7 +300,7 @@ public class AdminActivator implements BundleActivator {
 					break;
 					
 				default:
-					System.out.println("Invalid Input!! Please Enter A Command From The Givestarn List!!");
+					System.out.println("Invalid Input!! Please Enter A Command From The Given List!!");
 					System.out.println("");
 					break;
 					
