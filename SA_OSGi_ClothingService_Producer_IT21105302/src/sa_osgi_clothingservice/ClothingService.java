@@ -1,5 +1,7 @@
 package sa_osgi_clothingservice;
 
+import java.util.ArrayList;
+
 public interface ClothingService {
 	
 	public boolean checkClothingAvailability(String brandName,String type,String Size);
@@ -10,6 +12,11 @@ public interface ClothingService {
 	public boolean checkClothingAvailabilityTS(String type,String Size);
 	public boolean checkClothingAvailabilityBS(String brandName,String Size);
 	public double price(); 
-	public Clothing[] results();
+	public ArrayList<Clothing> results();
 	public int getCount();
+	public ArrayList<Clothing> getAllClothes();
+	public void insertDataToDB(String brand,String type,String size,double price);
+	public void updateDB(Integer id,String brand,String type, String size,double price);
+	public void deleteFromDB(int id);
+	public Clothing getClothingFromID(int id);
 }
