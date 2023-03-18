@@ -152,7 +152,7 @@ public class ToysServiceImpl implements ToysService {
 	@Override
 	public void insertToy(String type, String ageGroup, double price) {
 		try {
-			preState = connection.prepareStatement("INSERT INTO part values (null,?,?,?)");
+			preState = connection.prepareStatement("INSERT INTO toy values (null,?,?,?)");
 			preState.setString(1, type);
 			preState.setString(2, ageGroup);
 			preState.setDouble(3, price);
