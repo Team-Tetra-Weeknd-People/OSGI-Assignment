@@ -41,13 +41,13 @@ public class AdminActivator implements BundleActivator {
 				System.out.println("|---------------------------------------------------|");
 				System.out.println("|       A      |  View All Toys                     |");
 				System.out.println("|---------------------------------------------------|");
-				System.out.println("|       P      |  View one Toys by ID       		|");
+				System.out.println("|       P      |  View one Toys by ID               |");
 				System.out.println("|---------------------------------------------------|");
-				System.out.println("|       I      |  Insert a Toy             			|");
+				System.out.println("|       I      |  Insert a Toy                      |");
 				System.out.println("|---------------------------------------------------|");
-				System.out.println("|       U      |  Update a Toy by ID       			|");
+				System.out.println("|       U      |  Update a Toy by ID                |");
 				System.out.println("|---------------------------------------------------|");
-				System.out.println("|       D      |  Delete a Toy by ID       			|");
+				System.out.println("|       D      |  Delete a Toy by ID                |");
 				System.out.println("|---------------------------------------------------|");
 				System.out.println("|       T      |  Go To Toys Shop                   |");
 				System.out.println("|---------------------------------------------------|");
