@@ -60,7 +60,6 @@ public class ConsumerActivator implements BundleActivator {
 				if(name.length() != 0) {
 					while(status) {
 						for(Part part : partList) {
-							System.out.println(part.getName() + " " + name);
 							if(part.getName().equalsIgnoreCase(name)) {
 								valid = true;
 								break;
