@@ -13,6 +13,8 @@ public class ClothingServiceImpl implements ClothingService{
 	private MallDBImpl mallDB;
 	private ResultSet resultSet;
 	
+	public ArrayList<Clothing> clothes ;
+	
 	
 	public ClothingServiceImpl() {
 		super();
@@ -20,6 +22,7 @@ public class ClothingServiceImpl implements ClothingService{
 		connection = mallDB.connection();
 	}
 	public ArrayList<Clothing> getAllClothes() {
+		clothes = new ArrayList<Clothing>();
 		// TODO Auto-generated method stub
 		ArrayList<Clothing> clothings = new ArrayList<Clothing>();
 		try {
@@ -68,7 +71,6 @@ public class ClothingServiceImpl implements ClothingService{
 //	
 	
 	ArrayList<Clothing> inStockClothes = new ArrayList<Clothing>();
-	ArrayList<Clothing> clothes = new ArrayList<Clothing>();
 	
 	
 	double outPrice;
