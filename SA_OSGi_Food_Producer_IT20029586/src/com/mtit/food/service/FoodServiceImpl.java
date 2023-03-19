@@ -6,8 +6,7 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-import com.mtit.mall.database.*;
-
+import sa_osgi_mall_database.*;
 
 public class FoodServiceImpl implements FoodService {
 	
@@ -54,7 +53,7 @@ public class FoodServiceImpl implements FoodService {
 		foods.removeAll(foods);
 		
 		for(Food oneFood : foodList) {
-			if(oneFood.getName().equalsIgnoreCase(name) && oneFood.getName().equalsIgnoreCase(type)) {
+			if(oneFood.getName().equalsIgnoreCase(name) && oneFood.getType().equalsIgnoreCase(type)) {
 				foods.add(oneFood);
 				status = true;
 			}
