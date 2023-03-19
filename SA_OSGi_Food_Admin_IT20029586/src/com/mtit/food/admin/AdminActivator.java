@@ -149,7 +149,7 @@ public class AdminActivator implements BundleActivator {
 						
 						System.out.println("");
 						System.out.println("-----------------------------------------");
-						System.out.println("|          New Food Item Added          |");
+						System.out.println("|        New Food Item Part Added        |");
 						System.out.println("-----------------------------------------");
 						System.out.println("");
 						break;
@@ -191,7 +191,7 @@ public class AdminActivator implements BundleActivator {
 							type = "";
 							priceInput = "";						
 							
-							System.out.println("-------=Keep a BLANK to skip updating an element------");
+							System.out.println("---------Keep a BLANK to skip updating an element------");
 							
 							System.out.print("Enter the Food Item Name : ");
 							name = br.readLine();
@@ -206,7 +206,7 @@ public class AdminActivator implements BundleActivator {
 							}
 							
 							
-							System.out.print("Enter the Food Price(In Rupees): ");
+							System.out.print("Enter the Food Item Price(In Rupees): ");
 							priceInput = br.readLine();
 							if(priceInput.length() == 0) {
 								price = food.getPrice();
@@ -229,7 +229,7 @@ public class AdminActivator implements BundleActivator {
 						inputID = "";
 						food = new Food();
 						while(inputID.length() == 0) {
-							System.out.print("Enter The ID Of The Food Item That Need To Delete : ");
+							System.out.print("Enter The ID Of The Vehicle Part That Need To Delete : ");
 							inputID = br.readLine();
 							if(inputID.length() == 0) {
 								System.out.println("Please Enter a Value!!!");
@@ -257,7 +257,7 @@ public class AdminActivator implements BundleActivator {
 							System.out.println("-----------------------------------------");
 							System.out.println("");
 							
-							System.out.print("Do You Want To Delete This Food Item (Y | N): ");
+							System.out.print("Do You Want To Delete This Vehicle Item (Y | N): ");
 							String delete = br.readLine();
 							if(delete.equalsIgnoreCase("Y")) {
 								foodService.delete(Integer.parseInt(inputID));
@@ -284,7 +284,7 @@ public class AdminActivator implements BundleActivator {
 						break;
 						
 					default:
-						System.out.println("Invalid Input!! Please Enter A Command From The Given List!!");
+						System.out.println("Invalid Input!! Please Enter A Command From The Givestarn List!!");
 						System.out.println("");
 						break;
 						

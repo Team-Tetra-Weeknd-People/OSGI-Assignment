@@ -11,5 +11,5 @@ Automatic-Module-Name: SA.OSGi.Food.Admin.IT20029586
 Import-Package: com.miti.food.consumer,
  com.mtit.food.service,
  org.osgi.framework;version="1.3.0",
- com.mtit.mall.database
+ sa_osgi_mall_database
 

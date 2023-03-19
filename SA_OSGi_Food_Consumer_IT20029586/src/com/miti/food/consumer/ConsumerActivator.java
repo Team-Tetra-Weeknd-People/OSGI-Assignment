@@ -21,6 +21,7 @@ public class ConsumerActivator implements BundleActivator {
 	String name;
 	String type;
 	boolean status;
+	boolean valid;
 	boolean allEmpty;
 	String exit;
 
@@ -37,19 +38,69 @@ public class ConsumerActivator implements BundleActivator {
 		System.out.print("Welcome to the Caffeteria");
 		System.out.println("---------------------\n");
 		
+		System.out.println("---Enter the required details you need to get the items you need---");
+		System.out.println("---------------Enter 2 Blanks to exit from the system--------------");
+		
+		foodList = foodService.getAll();
+		
 		try {
 			while(true) {
 				name = "";
 				type = "";
 				status = false;
 				allEmpty = false;
+				valid = false;
 				foods.removeAll(foods);
 				
+				status = true;
 				System.out.print("Enter the Food Name : ");
 				name = br.readLine();
 				
+				if(name.length() != 0) {
+					while(status) {
+						for(Food food : foodList) {
+							if(food.getName().equalsIgnoreCase(name)) {
+								valid = true;
+								break;
+							}
+						}
+						if(valid) {
+							break;
+						}
+						System.out.println("Invalid Input !!\n");
+						System.out.print("Enter the Food Name : ");
+						name = br.readLine();
+						if(name.length() == 0) {
+							break;
+						}
+					}
+				}
+				
+				status = true;
+				valid = false;
 				System.out.print("Enter the Food Type : ");
 				type = br.readLine();
+				
+				if(type.length() != 0) {
+					while(status) {
+						for(Food food : foodList) {
+							if(food.getType().equalsIgnoreCase(type)) {
+								valid = true;
+								break;
+							}
+						}
+						if(valid) {
+							break;
+						}
+						System.out.println("Invalid Input !!\n");
+						System.out.print("Enter the Food Type : ");
+						type = br.readLine();
+						if(type.length() == 0) {
+							break;
+						}
+					}
+				}
+				status = false;
 				
 				if(name.length() != 0 && type.length() != 0) {
 					status = foodService.checkFoodAvailability(name, type);
@@ -97,7 +148,7 @@ public class ConsumerActivator implements BundleActivator {
 				
 			}
 		}catch(Exception e) {
-			
+			System.out.println(e);
 		}
 		
 	}
